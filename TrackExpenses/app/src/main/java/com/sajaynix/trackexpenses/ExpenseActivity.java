@@ -4,23 +4,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+
+public class ExpenseActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_expense);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_expense, menu);
         return true;
     }
 
@@ -37,17 +35,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void verifyLogin(View view) {
-
-        EditText userNameText = (EditText) findViewById(R.id.user_name);
-        String userName = userNameText.getText().toString();
-        EditText passwordText = (EditText) findViewById(R.id.password);
-        String password = passwordText.getText().toString();
-        Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
-
-        // TODO, create the task to call the REST API
-
     }
 }
