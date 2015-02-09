@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -48,6 +49,10 @@ public class MainActivity extends ActionBarActivity {
         Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
 
         // TODO, create the task to call the REST API
+        // If successfully logged in , go to view list of expenses
+
+        Intent intent = new Intent(this, ExpenseActivity.class);
+        startActivity(intent);
 
     }
 }
