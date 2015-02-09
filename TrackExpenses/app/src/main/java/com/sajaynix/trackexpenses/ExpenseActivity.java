@@ -1,9 +1,13 @@
 package com.sajaynix.trackexpenses;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class ExpenseActivity extends ActionBarActivity {
@@ -12,6 +16,17 @@ public class ExpenseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
+    }
+
+    public void addExpense(View view) {
+
+        EditText amountText = (EditText) findViewById(R.id.et_amount);
+        String amount = amountText.getText().toString();
+        Toast.makeText(getApplicationContext(), amount, Toast.LENGTH_SHORT).show();
+
+        // TODO, create the task to post the new Expense to Rest API
+
+
     }
 
 

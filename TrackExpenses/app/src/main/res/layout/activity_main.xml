@@ -60,16 +60,4 @@
             android:onClick="verifyLogin"
             android:hint="@string/button_login"
             />
-        <TextView
-            android:id="@+id/tv_error"
-            android:layout_width="400dip"
-            android:layout_height="100dip"
-            android:textSize="7pt"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/btn_login"
-            android:layout_marginRight="9dip"
-            android:layout_marginTop="15dip"
-            android:layout_marginLeft="120dip"
-            android:textColor="#AA0000"
-            android:text=""/>
 </RelativeLayout>
