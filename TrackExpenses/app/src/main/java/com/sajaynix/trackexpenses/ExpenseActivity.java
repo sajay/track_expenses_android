@@ -9,6 +9,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.HttpResponse;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+
 
 public class ExpenseActivity extends ActionBarActivity {
 
@@ -25,6 +39,33 @@ public class ExpenseActivity extends ActionBarActivity {
         Toast.makeText(getApplicationContext(), amount, Toast.LENGTH_SHORT).show();
 
         // TODO, create the task to post the new Expense to Rest API
+        JSONObject jsonExpense = new JSONObject();
+        try {
+            jsonExpense.put("expenseCategory", 1);
+            jsonExpense.put("expenseType", 1);
+            jsonExpense.put("amount_spent", 100.01);
+            jsonExpense.put("expense_date", new Date());
+            jsonExpense.put("vendorType", 1);
+            jsonExpense.put("created_by",1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            DefaultHttpClient httpclient = new DefaultHttpClient();
+            HttpPost httpPostRequest = new HttpPost("http://localhost:8000/api/v1/expenses/");
+            StringEntity se = new StringEntity(jsonExpense.toString());
+            se.setContentType("application/json;charset=UTF-8");
+            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE,"application/json;charset=UTF-8"));
+            httpPostRequest.setEntity(se);
+            HttpResponse httpresponse = httpclient.execute(httpPostRequest);
+            Toast.makeText(getApplicationContext(), "Expense Added", Toast.LENGTH_SHORT).show();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
